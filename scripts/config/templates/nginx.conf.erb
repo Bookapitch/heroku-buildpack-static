@@ -78,6 +78,10 @@ http {
     return 301 https://$1$request_uri;
   }
 
+  if ($host ~* "^pitchmanager\.") {
+    return 301 https://bookapitch.com/venues;
+  }
+
   <% routes.each do |route, path| %>
     location ~ ^<%= route %>$ {
       set $route <%= route %>;
